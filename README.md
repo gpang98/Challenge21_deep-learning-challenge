@@ -113,7 +113,7 @@ The results of the testing of different neural network architectures with varyin
 - Optimisation no. 2 was to add more hidden layers.
 - Optimisation no. 3 was to test with reduction in the number of neurons per hidden layer.
 
-### Analysis:
+## Analysis:
 
 #### Accuracy Comparison:
 - Model 1 has the highest accuracy at 72.80%, closely followed by Model 3 at 72.71%.
@@ -123,16 +123,16 @@ The results of the testing of different neural network architectures with varyin
 - Model 3 has the lowest loss at 0.5653, followed by the initial model at 0.5655.
 - Model 1 has a loss of 0.5740, and Model 2 has the highest loss at 0.5946.
 
-### Observations:
+## Observations:
 - Model 1 has a slightly higher accuracy compared to the others, but it also has a higher loss than the initial model and Model 3.
 - Model 3 has a lower loss than the initial model, indicating potentially better performance in terms of minimizing errors.
 - The initial model performs quite similarly to Model 3 in terms of accuracy and has a slightly higher loss.
 
-### Conclusion:
+## Conclusion:
 - Model 1 might have a marginal edge in accuracy, but considering the balance between accuracy and loss, Model 3 or the initial model could be competitive choices, especially if a lower loss is of significance.
 - Further analysis, validation on a test set, and consideration of other factors beyond accuracy and loss (such as computational efficiency, robustness, interpretability) are crucial in determining the most suitable model for deployment.
 
-### Further Testing:
+## Further Testing:
 Further testing could be done to see whether it is possible to reach the >75% accuracy with low loss such as follow:
 
 1. Hyperparameter Tuning:
