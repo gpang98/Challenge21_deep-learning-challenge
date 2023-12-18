@@ -94,7 +94,7 @@ The results of the testing of different neural network architectures with varyin
 
 ## Key Questions:
 #### 1. What variable(s) are the target(s) for your model?
-- `IS_SUCCESSFUL` column will be used as `target` varaible.
+- `IS_SUCCESSFUL` column was used as `target` variable.
 
 #### 2. What variable(s) are the features for your model?
 - The rest of the columns are used as `features` minus the `EIN` and `NAME` columns in the machine learning and neural networks.
@@ -103,15 +103,15 @@ The results of the testing of different neural network architectures with varyin
 - `EIN` and `NAME` variables are removed from the input data because they are neither targets nor features.
 
 #### 4. How many neurons, layers, and activation functions did you select for your neural network model, and why?
-- Since there are about 40 features the number of neurons are at least 40 for first layer.  Added more layers to capture more complexities in the relationship and only one output using `sigmoid` since there are only two outcome.  Successfull or unsuccessful.
+- Since there are about 40 features the number of neurons are at least 40 for first layer.  Added more layers to capture more complexities in the relationship and only one output using `sigmoid` since there are only two outcome.  Successfull or unsuccessful.  See the table above for more details per model.
 
 #### 5. Were you able to achieve the target model performance?
-- Not able to achive the >75% accuracy.  All the models were quite comparable in the 72+% accuracy range with low loss at 0.5x.
+- Not able to achieve the >75% accuracy.  All the models were quite comparable in the 72+% accuracy range with low loss at 0.5x.
 
 #### 6. What steps did you take in your attempts to increase model performance?
-- Optimisation no. 1 was to try to increase the number of neurons per layer.
-- Optimisation no. 2 was trying to add more hidden layers.
-- Optimisation no. 3 was to test to reduce the number of neurons.
+- Optimisation no. 1 was to increase the number of neurons per hidden layer.
+- Optimisation no. 2 was to add more hidden layers.
+- Optimisation no. 3 was to test with reduction in the number of neurons per hidden layer.
 
 ### Analysis:
 
