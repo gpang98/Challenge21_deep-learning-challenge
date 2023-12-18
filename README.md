@@ -12,7 +12,7 @@ The analysis involves training and testing multiple neural network models using 
 
 #### Results
 
-##### Initial Model (2 Hidden Layers: 80 neurons, 30 neurons + Output layer: 1 neuron).  ![Initial Model Result](https://github.com/gpang98/Challenge21_deep-learning-challenge.gitImages/Initial_ModeLArchitecture_Result.jpg)
+##### Initial Model (2 Hidden Layers: 80 neurons, 30 neurons + Output layer: 1 neuron).  ![Initial Model Result](https://github.com/gpang98/Challenge21_deep-learning-challenge.gitImages/Initial_Model_Architecture_Result.jpg)
 
 - **Accuracy:** 72.67%
 - **Loss:** 0.5655
