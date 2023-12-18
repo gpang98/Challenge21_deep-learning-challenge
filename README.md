@@ -85,7 +85,7 @@ The following is the workflow employed in performing the neural network deep pre
    - Feel free to download the uploaded pages so that you can also explore the dataset and gain insights.
 
 ## Main Results and Findings.
-The results of the testing of differnet nerula network architectures with varying numbers of hidden layers and neurons in each layer to find the best-performing model for your data are given as below:
+The results of the testing of different neural network architectures with varying numbers of hidden layers and neurons in each layer to find the best-performing model for the data are given as below:
 
 | Model Name | Structure                                | Accuracy | Loss    |
 |------------|------------------------------------------|----------|---------|
