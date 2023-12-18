@@ -12,7 +12,7 @@ The analysis involves training and testing multiple neural network models using 
 
 #### Results
 
-##### Initial Model (2 Hidden Layers: 80 neurons, 30 neurons + Output layer: 1 neuron).  (Initial Model Architecture)(https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Initial_Model_Architecture.jpg)
+##### Initial Model (2 Hidden Layers: 80 neurons, 30 neurons + Output layer: 1 neuron).  ![Initial Model Architecture](https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Initial_Model_Architecture.jpg)
 
 - **Accuracy:** 72.67%
 - **Loss:** 0.5655
@@ -29,7 +29,7 @@ The analysis involves training and testing multiple neural network models using 
 - **Accuracy:** 72.71%
 - **Loss:** 0.5653
 
-#### Results Analysis.  (Model Results Comparison)(https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Tabulation_of_the_vrious_model_results.jpg)
+#### Results Analysis.  ![Model Results Comparison](https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Tabulation_of_the_vrious_model_results.jpg)
 
 - **Accuracy Comparison:** Model 1 achieves the highest accuracy at 72.80%, closely followed by Model 3 at 72.71%.
 - **Loss Comparison:** Model 3 displays the lowest loss at 0.5653, whereas Model 1 records the highest loss at 0.5740.
