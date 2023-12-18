@@ -12,7 +12,7 @@ The analysis involves training and testing multiple neural network models using 
 
 #### Results
 
-##### Initial Model (2 Hidden Layers: 80 neurons, 30 neurons + Output layer: 1 neuron).  [Initial Model Result](https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Initial_Model_Architecture.jpg)
+##### Initial Model (2 Hidden Layers: 80 neurons, 30 neurons + Output layer: 1 neuron).  (Initial Model Architecture)(https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Initial_Model_Architecture.jpg)
 
 - **Accuracy:** 72.67%
 - **Loss:** 0.5655
@@ -29,30 +29,41 @@ The analysis involves training and testing multiple neural network models using 
 - **Accuracy:** 72.71%
 - **Loss:** 0.5653
 
-#### Results Analysis
+#### Results Analysis.  (Model Results Comparison)(https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Tabulation_of_the_vrious_model_results.jpg)
 
 - **Accuracy Comparison:** Model 1 achieves the highest accuracy at 72.80%, closely followed by Model 3 at 72.71%.
 - **Loss Comparison:** Model 3 displays the lowest loss at 0.5653, whereas Model 1 records the highest loss at 0.5740.
 
 #### Answering Key Questions
 
-1. *Which model demonstrated the best performance?*
-   - Model 1 exhibited the highest accuracy, but it also recorded a slightly higher loss compared to Model 3.
+### Data Preprocessing
 
-2. *What were the accuracy and loss scores for the initial model?*
-   - The initial model achieved an accuracy of 72.67% with a loss of 0.5655.
+#### Target and Features
+- **Target Variable(s):** The target variable for the model is `IS_SUCCESSFUL`.
+- **Feature Variable(s):** All columns except `EIN` and `NAME` serve as features for the model.
+- **Variables to Remove:** `EIN` and `NAME` columns should be removed from the input data as they are neither targets nor features.
 
-3. *Was there a significant difference in performance metrics between the models?*
-   - While there were slight differences in accuracy and loss, the overall performance across the models was quite comparable.
+### Compiling, Training, and Evaluating the Model
 
-4. *What could be a potential reason for the differences in performance?*
-   - Variations in the number of neurons, layers, and their configurations could influence the model's learning capabilities and generalization.
+#### Neural Network Model Configuration
+- **Neurons, Layers, and Activation Functions:** 
+  - The selected model configuration includes:
+    - Two hidden layers with 80 neurons in the first layer and 30 neurons in the second layer, followed by an output layer with 1 neuron.
+    - Activation functions used are ReLU for hidden layers and sigmoid for the output layer.
+  - The chosen configuration aims for a balance between complexity and model performance.
 
-5. *Were any models overfitting or underfitting the data?*
-   - None of the models displayed drastic signs of overfitting or underfitting, considering the close alignment between training and testing metrics.
+#### Target Model Performance
+- **Achieving Target Model Performance:** 
+  - The attempted model achieved an accuracy of 72.67% and a loss of 0.5655, which aligned with the targeted performance.
+  
+#### Steps for Improving Model Performance
+- **Attempts to Increase Model Performance:** 
+  - Several strategies were employed to enhance model performance:
+    - Adjusted the number of neurons and layers to observe their impact on accuracy and loss.
+    - Experimented with different activation functions (ReLU and sigmoid) to optimize the model's learning.
+    - Utilized train-test splits and scaling techniques to refine the input data.
+    - Considered further optimization techniques such as varying learning rates and batch sizes to fine-tune the model.
 
-6. *What insights can be derived from the models' performances?*
-   - Model 3 presents a compelling case with a slightly lower loss while maintaining competitive accuracy, indicating potentially better generalization.
 
 #### Summary of Model Performance
 
