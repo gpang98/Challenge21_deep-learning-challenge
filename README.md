@@ -1,77 +1,148 @@
-### Analysis of Neural Network Models for Funding Prediction
+# Analysis of Neural Network Models for Funding Prediction
+##### Challenge21_deep-learning-challenge - UWA/edX Data Analytics BootCamp.
 
----
+## Overview
 
-#### Purpose of the Analysis
+This project aim to help the nonprofit foundation Alphabet Soup to build a tool that can help it select the applicants for funding with the best chance of success in their ventures using the CSV containing more than 34,000 organisations that have received funding from Alphabet Soup over the years. 
 
-The primary objective of this analysis is to predict the success of applicants for funding from Alphabet Soup using machine learning techniques, specifically neural network models. By leveraging various architectures and configurations, the aim is to identify the model that best predicts the success of applicants based on the provided dataset.
+## Objective
 
-#### Model Comparison and Evaluation
-
-The analysis involves training and testing multiple neural network models using different structures and configurations. The models are assessed based on accuracy and loss metrics to determine their predictive capabilities.
-
-#### Results
-
-##### Initial Model (2 Hidden Layers: 80 neurons, 30 neurons + Output layer: 1 neuron).  ![Initial Model Architecture](https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Initial_Model_Architecture.jpg)
-
-- **Accuracy:** 72.67%
-- **Loss:** 0.5655
-
-##### Model 1 (2 Hidden Layers: 160 neurons, 60 neurons + Output layer: 1 neuron)
-- **Accuracy:** 72.80%
-- **Loss:** 0.5740
-
-##### Model 2 (4 Hidden Layers: 160 neurons, 100 neurons, 80 neurons, 60 neurons + Output layer: 1 neuron)
-- **Accuracy:** 72.49%
-- **Loss:** 0.5946
-
-##### Model 3 (2 Hidden Layers: 60 neurons, 40 neurons + Output layer: 1 neuron)
-- **Accuracy:** 72.71%
-- **Loss:** 0.5653
-
-#### Results Analysis.  ![Model Results Comparison](https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Tabulation_of_the_vrious_model_results.jpg)
-
-- **Accuracy Comparison:** Model 1 achieves the highest accuracy at 72.80%, closely followed by Model 3 at 72.71%.
-- **Loss Comparison:** Model 3 displays the lowest loss at 0.5653, whereas Model 1 records the highest loss at 0.5740.
-
-#### Answering Key Questions
-
-### Data Preprocessing
-
-#### Target and Features
-- **Target Variable(s):** The target variable for the model is `IS_SUCCESSFUL`.
-- **Feature Variable(s):** All columns except `EIN` and `NAME` serve as features for the model.
-- **Variables to Remove:** `EIN` and `NAME` columns should be removed from the input data as they are neither targets nor features.
-
-### Compiling, Training, and Evaluating the Model
-
-#### Neural Network Model Configuration
-- **Neurons, Layers, and Activation Functions:** 
-  - The selected model configuration includes:
-    - Two hidden layers with 80 neurons in the first layer and 30 neurons in the second layer, followed by an output layer with 1 neuron.
-    - Activation functions used are ReLU for hidden layers and sigmoid for the output layer.
-  - The chosen configuration aims for a balance between complexity and model performance.
-
-#### Target Model Performance
-- **Achieving Target Model Performance:** 
-  - The attempted model achieved an accuracy of 72.67% and a loss of 0.5655, which aligned with the targeted performance.
-  
-#### Steps for Improving Model Performance
-- **Attempts to Increase Model Performance:** 
-  - Several strategies were employed to enhance model performance:
-    - Adjusted the number of neurons and layers to observe their impact on accuracy and loss.
-    - Experimented with different activation functions (ReLU and sigmoid) to optimize the model's learning.
-    - Utilized train-test splits and scaling techniques to refine the input data.
-    - Considered further optimization techniques such as varying learning rates and batch sizes to fine-tune the model.
+The primary goal of this project is:
+- To find out whether we can predict whether applicants will be successful if funded by Alphabet Soup.
 
 
-#### Summary of Model Performance
+## Dataset
 
-Considering the balance between accuracy and loss, Model 3 or the initial model could be competitive choices. Model 1, despite its higher accuracy, demonstrates a slightly elevated loss.
+The CSV file weblink `https://static.bc-edx.com/data/dla-1-2/m21/lms/starter/charity_data.csv`is provided and contain the following fields:
+![Input Data](https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Input_data.jpg)
 
-#### Alternative Model Consideration
+- `EIN` and `NAME` —Identification columns
+- `APPLICATION_TYPE` —Alphabet Soup application type
+- `AFFILIATION` —Affiliated sector of industry
+- `CLASSIFICATION` —Government organisation classification
+- `USE_CASE` —Use case for funding
+- `ORGANIZATION` —Organisation type
+- `STATUS` —Active status
+- `INCOME_AMT` —Income classification
+- `SPECIAL_CONSIDERATIONS` —Special considerations for application
+- `ASK_AMT` —Funding amount requested
+- `IS_SUCCESSFUL` —Was the money used effectively
+    
+The `IS_SUCCESSFUL` column will be used as `target` while the the rest of the columns as `features` minus the `EIN` and `NAME` columns in the machine learning and neural networks.
 
-Another potential model that could be explored is a Gradient Boosting Machine (GBM). GBM models, such as XGBoost or LightGBM, offer ensemble-based learning and have proven effective in handling tabular data. The implementation of such models could be considered due to their ability to capture non-linear relationships and handle categorical variables effectively, potentially improving predictions.
+The target column has 34299 total rows with 18261 label as 1 ('successful') and 16038 label as 0 ('unsuccessful'). So, this show fairly balance with slight biased towards successful data.
 
----
-*Incorporating images and providing visual representations of the model architectures and performance metrics will be included in the updated report to enhance understanding and clarity.*
+## Tools and Libraries
+- `Python`: Used for data preprocessing, initial analysis, and visualization.
+- `Pandas`: Utilized for data manipulation and analysis.
+- `Jupyter Notebook`: Employed as the development environment.
+- `sklearn`: module used to do neural network deep prediction.
+- `train_test_split()`: Function to split the original dataset to Train and Test datasets.
+- `StandardScaler()` and `transform()`: To scale the training and testing features datasets.
+- `tensorflow.keras.models.Sequential()`: Function to access the neural network deep prediction.
+- `add()`: To add hidden layers.
+- `summary()`: To see the summary of the model architecture built.
+- `compile()`: Function to compile the model.
+- `fit()`: Function to train the model.
+- `evaluate()`: To evaluate the model using the test data.
+- `save()`: To save the model to HDFS file.
+
+
+## Workflow
+The following is the workflow employed in performing the neural network deep prediction:
+
+1. Import the necessary dependencies: 
+	- from `sklearn` import `train_test_split`,  `StandardScaler`
+	- `pandas`
+	- `tensorflow`
+2. Preprocessing the data.
+	- Read in the `charity_data.csv` and identify `IS_SUCCESSFUL` as the target variable while the rest of the dataset are used as `features` minus the `EIN` and `NAME` columns.
+	- Determine the number of unique values for each columns.
+		- Used cutoff_value of `200` for `APPLICATION_TYPE` column to reduce to 9 bins.
+		- Used cutoff_value of `850` for `CLASSIFICATION` column to reduce to 6 bins.
+	- Use `pd.get_dummies()` to encode categorical codes for `INCOME_AMT`, `APPLICATION_TYPE`, `CLASSIFICATION`, `AFFILIATION`, `USE_CASE`, `ORGANIZATION` and `SPECIAL_CONSIDERATIONS`.
+	- Use `train_test_split` function to split the data into training and testing datasets.
+	- Use `StandardScaler()` and `transform()` to scale the training and testing features datasets.
+3. Compile, Train, and Evaluate the Model.  Check `AlphabetSoupCharity.ipynb` for the python codes. 
+	- Use `tensorflow.keras.models.Sequential()` to create the initial neural network model with 2 hiddens layers and one output layer.
+		- `Inital Model` - Structure: 2 hidden layers (80 neurons, 30 neurons) + Output layer (1 neuron)
+	- `compile()` the model with `adam` as `optimizer`
+	- `fit()` to train the model with epochs = 100.
+	- `evaluate()` the model usign testt data and note the `loss` and `accuracy` numbers.
+	- `save()` to save the model to HDFS file.
+4. Optimise the Model.  Check `AlphabetSoupCharity_Optimisation.ipynb` for the python codes. Repeat the Step no.3 but with slightly different parameters as listed below:
+	- `Optimsation Model No.1` - Structure: 2 hidden layers (160 neurons, 60 neurons) + Output layer (1 neuron)
+	- `Optimsation Model No.2` - Structure: 4 hidden layers (160 neurons, 100 neurons, 80 neurons, 60 neurons) + Output layer (1 neuron)
+	- `Optimsation Model No.3` - Structure: 2 hidden layers (60 neurons, 40 neurons) + Output layer (1 neuron)
+
+5. Finally, the assessment of the results of the neural network deep learning prediction is carried out by comparing the `loss` and `accuracy` scores.
+
+
+## Usage
+
+1. **Setup Environment:**
+   - Download Jupyter Notebook so that you can download the uploaded files and view within your local machine.
+
+2. **Educational Purposes:**
+   - Feel free to download the uploaded pages so that you can also explore the dataset and gain insights.
+
+## Main Results and Findings.
+The results of the testing of different neural network architectures with varying numbers of hidden layers and neurons in each layer to find the best-performing model for the data are given as below:
+
+![Model Methods Results Comparison](https://github.com/gpang98/Challenge21_deep-learning-challenge/blob/main/Images/Model_architecture_and_results.jpg)
+
+
+## Key Questions:
+#### 1. What variable(s) are the target(s) for your model?
+- `IS_SUCCESSFUL` column will be used as `target` varaible.
+
+#### 2. What variable(s) are the features for your model?
+- The rest of the columns are used as `features` minus the `EIN` and `NAME` columns in the machine learning and neural networks.
+
+#### 3. What variable(s) should be removed from the input data because they are neither targets nor features?
+- `EIN` and `NAME` variables are removed from the input data because they are neither targets nor features.
+
+#### 4. How many neurons, layers, and activation functions did you select for your neural network model, and why?
+- Since there are about 40 features the number of neurons are at least 40 for first layer.  Added more layers to capture more complexities in the relationship and only one output using `sigmoid` since there are only two outcome.  Successfull or unsuccessful.
+
+#### 5. Were you able to achieve the target model performance?
+- Not able to achive the >75% accuracy.  All the models were quite comparable in the 72+% accuracy range with low loss at 0.5x.
+
+#### 6. What steps did you take in your attempts to increase model performance?
+- Optimisation no. 1 was to try to increase the number of neurons per layer.
+- Optimisation no. 2 was trying to add more hidden layers.
+- Optimisation no. 3 was to test to reduce the number of neurons.
+
+### Analysis:
+
+#### Accuracy Comparison:
+- Model 1 has the highest accuracy at 72.80%, closely followed by Model 3 at 72.71%.
+- The initial model and Model 2 have accuracies of 72.67% and 72.49%, respectively.
+
+#### Loss Comparison:
+- Model 3 has the lowest loss at 0.5653, followed by the initial model at 0.5655.
+- Model 1 has a loss of 0.5740, and Model 2 has the highest loss at 0.5946.
+
+### Observations:
+- Model 1 has a slightly higher accuracy compared to the others, but it also has a higher loss than the initial model and Model 3.
+- Model 3 has a lower loss than the initial model, indicating potentially better performance in terms of minimizing errors.
+- The initial model performs quite similarly to Model 3 in terms of accuracy and has a slightly higher loss.
+
+### Conclusion:
+- Model 1 might have a marginal edge in accuracy, but considering the balance between accuracy and loss, Model 3 or the initial model could be competitive choices, especially if a lower loss is of significance.
+- Further analysis, validation on a test set, and consideration of other factors beyond accuracy and loss (such as computational efficiency, robustness, interpretability) are crucial in determining the most suitable model for deployment.
+
+### Further Testing:
+Further testing could be done to see whether it is possible to reach the >75% accuracy with low loss such as follow:
+
+1. Hyperparameter Tuning:
+- Learning Rate Adjustment: Experiment with different learning rates to find the optimal one that allows the model to converge faster without overshooting.
+- Activation Functions: Test different activation functions (eLU, tanh, etc.) to see which suits the data best.  This project has tried ReLU and sigmoid.
+- Batch Size and Epochs: Reduce or increase the batch sizes or more epochs improve performance.
+
+2. Model Architectures.
+- Different Architectures: Experiment with different architectures like convolutional neural networks (CNNs), recurrent neural networks (RNNs), or their variants depending on the nature of the data.
+
+## References
+
+1. Inspired by lectures notes and ChatGPT.
